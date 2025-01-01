@@ -100,8 +100,21 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["rs-ny.rustdesk.com"];
-pub const PUBLIC_RS_PUB_KEY: &str = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=";
+
+pub const RENDEZVOUS_SERVER: &str = match option_env!("RENDEZVOUS_SERVER") {
+    Some(server) if !server.is_empty() => server,
+    _ => "rs-ny.rustdesk.com", // 默认值
+};
+// 从环境变量中获取公钥，如果没有设置环境变量则使用默认值
+pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
+    Some(key) if !key.is_empty() => key,
+    _ => "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=", // 默认值
+};
+
+pub const RENDEZVOUS_SERVERS: &[&str] = &[RENDEZVOUS_SERVER];
+pub const PUBLIC_RS_PUB_KEY: &str = RS_PUB_KEY;
+
+
 
 pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
     Some(key) if !key.is_empty() => key,
