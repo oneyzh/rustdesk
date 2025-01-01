@@ -103,12 +103,12 @@ const CHARS: &[char] = &[
 
 pub const ONE_RENDEZVOUS_SERVER: &str = match option_env!("ONE_RENDEZVOUS_SERVER") {
     Some(server) if !server.is_empty() => server,
-    _ => "rs-ny.rustdesk.com", // 默认值
+    _ => "rs-ny.rustdesk1.com", // 默认值
 };
 // 从环境变量中获取公钥，如果没有设置环境变量则使用默认值
 pub const ONE_RS_PUB_KEY: &str = match option_env!("ONE_RS_PUB_KEY") {
     Some(key) if !key.is_empty() => key,
-    _ => "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=", // 默认值
+    _ => "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=1", // 默认值
 };
 
 pub const RENDEZVOUS_SERVERS: &[&str] = &[ONE_RENDEZVOUS_SERVER];
